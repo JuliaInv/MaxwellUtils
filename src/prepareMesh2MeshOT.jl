@@ -23,7 +23,7 @@ end
 
 function prepareMesh2MeshOT(pFor::Array{RemoteChannel},Minv::OcTreeMesh,N::Integer,compact::Bool=true)
 
-	Mesh2Mesh = Array(RemoteChannel,length(pFor))
+	Mesh2Mesh = Array(Future,length(pFor))
 
 	# find out which workers are involved
 	workerList = []
