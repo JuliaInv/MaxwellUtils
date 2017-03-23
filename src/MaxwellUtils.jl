@@ -46,7 +46,6 @@ if hasJOcTree
   include("setupMeshParam.jl")
   include("readTopo.jl")
   include("createSmallMeshFromTX.jl")
-  include("exportMesh.jl")
   include("setupBigOctreeMeshPolygon.jl")
   include("prepareMesh2MeshOT.jl") 
   include("createOcTreeFromTRX.jl")
