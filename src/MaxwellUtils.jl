@@ -32,6 +32,7 @@ export Transmitter
 # ---------------------------------------------------------
 
 include("readDataFiles.jl")
+include("writeDataFiles.jl")
 include("getTrxOmega.jl")
 include("getSxRxFromData.jl")
 include("getInitialModel.jl")
