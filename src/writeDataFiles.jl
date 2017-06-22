@@ -1,9 +1,9 @@
 export writeAllFiles, writeTrxRcvFile, writeFrqFile, writeDataFile
 
-function writeAllFiles( datafile::ASCIIString,
-                        trxfile::ASCIIString,
-                        rcvfile::ASCIIString,
-                        frqfile::ASCIIString,
+function writeAllFiles( datafile::String,
+                        trxfile::String,
+                        rcvfile::String,
+                        frqfile::String,
 												data::Array{datainfo},
 												trx::Array{TrxRcv},
 												rcv::Array{TrxRcv},
@@ -17,7 +17,7 @@ writeDataFile(datafile, data, only_loc)
 
 end
 
-function writeTrxRcvFile( trxfile::ASCIIString, trx::Array{TrxRcv} )
+function writeTrxRcvFile( trxfile::String, trx::Array{TrxRcv} )
 # Read the transmitter or receiver information into
 # an array of type TrxRcv.
 
@@ -40,7 +40,7 @@ function writeTrxRcvFile( trxfile::ASCIIString, trx::Array{TrxRcv} )
 	 
 end
 
-function writeFrqFile( frqfile::ASCIIString, frq::Array{freqinfo})
+function writeFrqFile( frqfile::String, frq::Array{freqinfo})
 
 	f = open(frqfile,"w")
 
@@ -55,7 +55,7 @@ function writeFrqFile( frqfile::ASCIIString, frq::Array{freqinfo})
 
 end
 
-function writeDataFile( datafile::ASCIIString, data::Array{datainfo}, only_loc::Bool )
+function writeDataFile( datafile::String, data::Array{datainfo}, only_loc::Bool )
 
 	f = open(datafile,"w")
 	
