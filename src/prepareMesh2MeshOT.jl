@@ -5,12 +5,12 @@ function prepareMesh2MeshOT(pF::ForwardProbType, Minv::OcTreeMesh, N::Integer, c
 
 	P    = getInterpolationMatrix(Minv,pF.Mesh,N)'
 	if compact
-		Ps = SparseMatrixCSC(P.m,P.n,round(UInt32,P.colptr),round(UInt32,P.rowval),round(Int8,log2(P.nzval)/3))
+		Ps = SparseMatrixCSC(P.m,P.n,round.(UInt32,P.colptr),round.(UInt32,P.rowval),round.(Int8,log2(P.nzval)/3))
 	else
-		Ps = SparseMatrixCSC(P.m,P.n,round(UInt32,P.colptr),round(UInt32,P.rowval),P.nzval)
+		Ps = SparseMatrixCSC(P.m,P.n,round.(UInt32,P.colptr),round.(UInt32,P.rowval),P.nzval)
 	end
 	return Ps
-	
+
 end
 
 
@@ -23,7 +23,7 @@ end
 
 function prepareMesh2MeshOT(pFor::Array{RemoteChannel},Minv::OcTreeMesh,N::Integer,compact::Bool=true)
 
-	Mesh2Mesh = Array(RemoteChannel,length(pFor))
+	Mesh2Mesh = Array{RemoteChannel}(length(pFor))
 
 	# find out which workers are involved
 	workerList = []
@@ -32,8 +32,8 @@ function prepareMesh2MeshOT(pFor::Array{RemoteChannel},Minv::OcTreeMesh,N::Integ
 	end
 	workerList = unique(workerList)
 	# send sigma to all workers
-	MinvRef = Array(Future,maximum(workers()))
-	
+	MinvRef = Array{Future}(maximum(workers()))
+
 	tic()
 	@sync begin
 		for p=workerList
@@ -44,7 +44,7 @@ function prepareMesh2MeshOT(pFor::Array{RemoteChannel},Minv::OcTreeMesh,N::Integ
 	end
 	sendTime=toq()
 	println("Time for sending out Minv $sendTime")
-		
+
 	@sync begin
 		for p=workerList
 			@async begin
