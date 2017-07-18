@@ -127,7 +127,7 @@ S = addTopo( S, itopo, 1,n[1], 1,n[2], max_topo_cell)
 S = OctreeBoxPolygonTopo(S, h,x0, x,y, itopo, 1)
 
 
-S = regularizeOcTree2(S)
+S = regularizeOcTree(S)
 
 if doFV
    M = getOcTreeMeshFV(S, h, x0=x0)

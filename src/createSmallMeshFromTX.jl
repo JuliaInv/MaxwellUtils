@@ -34,7 +34,7 @@ function createSmallMeshFromTX(
 
     S = cellsBelowSurf(S, x,y, h,n,x0,itopo,depth_core,mincellfactor)
 
-    S = regularizeOcTree2(S)
+    S = regularizeOcTree(S)
 
     if doFV
        M = getOcTreeMeshFV(S, h, x0=x0)
